@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Practical_6.Models.Product>
+
+    @{
+        ViewBag.Title = "Product Catalog";
+    }
+
+    <div class="catalog-container">
+
+        <!-- HEADER -->
+
+        <div class="catalog-header">
+
+            <div class="premium-title">
+                Premium Collection
+            </div>
+
+            <h1>
+                Product <span>Catalog</span>
+            </h1>
+
+            <p>
+                Explore our collection of premium products
+            </p>
+
+        </div>
+
+
+        <!-- PRODUCT GRID -->
+
+        <div class="product-grid">
+
+            @foreach (var product in Model)
+            {
+                <div class="product-column">
+
+                    <div class="product-card">
+
+                        <div class="product-number">
+                            PRODUCT #@product.ProductId
+                        </div>
+
+                        <div class="product-content">
+
+                            <h2>
+                                @product.ProductName
+                            </h2>
+
+                            <span class="product-category">
+                                @product.Category
+                            </span>
+
+                            <p class="product-description">
+                                @product.Description
+                            </p>
+
+                            <div class="product-price">
+                                ₹ @product.Price
+                            </div>
+
+                            <div class="product-stock">
+                                @product.Quantity units available
+                            </div>
+
+                            @Html.ActionLink(
+                                "View Product →",
+                                "Details",
+                                "Home",
+                                new { id = product.ProductId },
+                                new { @class = "btn-product" }
+                            )
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="catalog-footer">
+            © 2026 Product Catalog · ASP.NET MVC
+        </div>
+
+    </div>
